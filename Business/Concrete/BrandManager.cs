@@ -30,6 +30,7 @@ namespace Business.Concrete
             return _brandDal.GetAll();
         }
 
+        //Select * from Brands where BrandId = 1
         public Brand GetById(int brandId)
         {
             return _brandDal.Get(b => b.BrandId == brandId);
