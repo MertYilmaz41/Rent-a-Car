@@ -9,9 +9,9 @@ namespace Business.ValidationRules.FluentValidation
     public class CarImageValidator : AbstractValidator<CarImage>
     {
         public CarImageValidator()
-        {
-            RuleFor(cı => cı.CarImageId).NotEmpty();
+        {   
             RuleFor(cı => cı.CarId).NotEmpty();
+            RuleFor(cı => cı.CarId).NotNull();   
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Core.DataAccess.EntityFramework
             //IDisposable pattern implementation of c#
             using (TContext context = new TContext())
             {
-                var addedEntity = context.Entry(entity);
+                var addedEntity = context.Entry(entity);  //referansı tut
                 addedEntity.State = EntityState.Added;
                 context.SaveChanges();
             }
