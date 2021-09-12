@@ -40,6 +40,11 @@ namespace WebAPI
             //AOP
             services.AddControllers();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddCors(options => {
+
+                options.AddPolicy("AllowOrigin", builder => builder.WithOrigins("https://localhost:44301"));                   
+            });
+           
             //services.AddSingleton<ICarService, CarManager>();
             //services.AddSingleton<ICarDal, EfCarDal>();
 
@@ -83,6 +88,8 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder=> builder.WithOrigins("https://localhost:44301").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

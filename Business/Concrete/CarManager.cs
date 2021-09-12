@@ -46,7 +46,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarUpdated);
         }
 
-        [SecuredOperation("car.getall,admin")]
+        
         public IDataResult<List<Car>> GetAll()
         {
             if (DateTime.Now.Hour==23)
