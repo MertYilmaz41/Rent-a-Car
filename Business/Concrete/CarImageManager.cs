@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Helpers;
@@ -26,6 +27,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CarImageValidator))]
+        [TransactionAspect]
         public IResult Add(CarImage carImage, IFormFile file)
         {
             var result = BusinessRules.Run(CheckIfCarImageLimitExceeded(carImage.CarId));
@@ -42,7 +44,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarImageAdded);
         }
 
-
+        [TransactionAspect]
         public IResult Update(int id, IFormFile file)
         {
             var carImage = _carImageDal.Get(ci => ci.CarId == id);
@@ -55,7 +57,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarImageUpdated);
         }
 
-
+        [TransactionAspect]
         public IResult Delete(int id)
         {
             var carImage = _carImageDal.Get(ci => ci.CarId == id);

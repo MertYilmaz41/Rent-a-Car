@@ -41,29 +41,11 @@ namespace WebAPI
             //Autofac, Ninject, CastleWindsor, StructureMap, LightInject, DryInject --> IoC Container
             //AOP
             services.AddControllers();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddCors(options => {
 
                 options.AddPolicy("AllowOrigin", builder => builder.WithOrigins("https://localhost:44301"));                   
             });
            
-            //services.AddSingleton<ICarService, CarManager>();
-            //services.AddSingleton<ICarDal, EfCarDal>();
-
-            //services.AddSingleton<IColorService, ColorManager>();
-            //services.AddSingleton<IColorDal, EfColorDal>();
-
-            //services.AddSingleton<IBrandService, BrandManager>();
-            //services.AddSingleton<IBrandDal, EfBrandDal>();
-
-            //services.AddSingleton<IUserService, UserManager>();
-            //services.AddSingleton<IUserDal,EfUserDal>();
-
-            //services.AddSingleton<IRentalService, RentalManager>();
-            //services.AddSingleton<IRentalDal,EfRentalDal>();
-
-            //services.AddSingleton<ICustomerService, CustomerManager>();
-            //services.AddSingleton<ICustomerDal, EfCustomerDal>();
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -80,6 +62,7 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
+
             services.AddDependencyResolvers(new ICoreModule[]
             {
                 new CoreModule()
