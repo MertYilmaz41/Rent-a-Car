@@ -1,13 +1,18 @@
-﻿using Core.Business.Abstract;
-using Core.Entities.Concrete;
+﻿using Core.Entities.Concrete;
+using Core.Utilities.Results.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IUserService : IServiceRepository<User>
+    public interface IUserService
     {
+        IDataResult<List<User>> GetAll();
+        IDataResult<User> GetById(int id);
+        IResult Add(User user);
+        IResult Update(User user);
+        IResult Delete(User user);
         List<OperationClaim> GetClaims(User user);
         User GetByMail(string email);
     }

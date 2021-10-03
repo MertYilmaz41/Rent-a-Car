@@ -50,6 +50,7 @@ namespace Business.Constants
         public static string CarImagesListed = "Araba resimleri listelendi";
         public static string CarImageIsNotExists ="Araba resmi mevcut değil";
         public static string CarImageLimitExceeded ="Araba resim sınırı aşıldığı için yeni bir resim eklenemiyor";
+        public static string CarMustBeDelivered = "Araba teslim edilmiş olmalı.";
 
         public static string AuthorizationDenied="Yetkiniz yok";
 
@@ -60,6 +61,7 @@ namespace Business.Constants
 
         public static string UserAlreadyExists = "Bu kullanıcı zaten mevcut";
         public static string AccessTokenCreated = "Access token başarıyla oluşturuldu";
+
         
     }
 }
